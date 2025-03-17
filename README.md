@@ -24,7 +24,7 @@ An example implementation of a CLI coding assistant built with LangGraph.
     - Claude Sonnet (with extended thinking capabilities)
 - Additional Features
   - Claude Prompt Caching: [See implementation](src/claude.ts)
-  - (Experimental) Memory Bank: [See implementation details](src/agent.ts)
+  - (Experimental) Memory Bank: [See prompt](src/agent.ts)
 
 ## Getting Started
 
