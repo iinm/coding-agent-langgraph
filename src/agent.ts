@@ -170,9 +170,9 @@ Usecase: Browser automation (Experimental)
 read_web_page is used to read the content of a given web page URL.
 Do not use this tool for local files. Use exec_command/sed for local files.
 
-## read web page by browser
+## read web page by user browser
 
-read_web_page_by_browser is used to read the content of a given web page URL using a browser.
+read_web_page_by_user_browser is used to read the content of a given web page URL using a browser.
 
 Usecase:
 - Fetching content from websites that require JavaScript execution.
