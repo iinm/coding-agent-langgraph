@@ -1,5 +1,6 @@
 import {
   BaseMessageLike,
+  isAIMessage,
   isBaseMessage,
   isSystemMessage,
 } from "@langchain/core/messages";
@@ -9,22 +10,25 @@ import { Model } from "./model";
 export function enableClaudePromptCaching({
   model,
   messages,
-  cacheInterval,
 }: {
   model: Model;
   messages: BaseMessageLike[];
-  cacheInterval: number;
 }): BaseMessageLike[] {
   if (model.model.startsWith("claude")) {
-    // Example: cacheInterval = 4
-    //   3 message -> -1, -5
-    //   4 messages -> 3, -1
-    //   7 messages -> 3, -1
-    //   8 messages -> 7,  3
+    const userMessageIndices = messages.reduce<number[]>((acc, msg, index) => {
+      if (isBaseMessage(msg) && !isAIMessage(msg)) {
+        acc.push(index);
+      }
+      return acc;
+    }, []);
+
     const cacheTargetIndices = [
-      Math.floor(messages.length / cacheInterval) * cacheInterval - 1,
-      (Math.floor(messages.length / cacheInterval) - 1) * cacheInterval - 1,
-    ];
+      // last user message
+      userMessageIndices.at(-1),
+      // second last user message
+      userMessageIndices.at(-2),
+    ].filter((index): index is number => index !== undefined);
+
     const modifiedMessages = messages.map((msg, msgIndex) => {
       if (msgIndex === 0 && isBaseMessage(msg) && isSystemMessage(msg)) {
         // cache prompt message

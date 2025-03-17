@@ -250,7 +250,6 @@ export function createAgent({ model, tools }: { model: Model; tools: Tool[] }) {
     const cacheEnabledMessages = enableClaudePromptCaching({
       model,
       messages,
-      cacheInterval: 4,
     });
 
     const response = await model.bindTools(tools).invoke(cacheEnabledMessages);
