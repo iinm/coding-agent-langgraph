@@ -13,6 +13,7 @@ An example implementation of a CLI coding assistant built with LangGraph.
   - `patch_file`: Apply changes to existing files using diff format
   - `tmux`: Run background processes or interactive sessions within tmux
   - `read_web_page`: Extract and process content from websites
+  - `tavily_search`: Search the web for information using [Tavily API](https://github.com/langchain-ai/langchainjs/blob/main/libs/langchain-community/src/tools/tavily_search.ts)
   - (Experimental) `read_web_page_by_user_browser`: Access content from pages requiring authentication
 - Supported Models
   - OpenAI
@@ -23,9 +24,9 @@ An example implementation of a CLI coding assistant built with LangGraph.
     - Claude Sonnet
     - Claude Sonnet (with extended thinking capabilities)
 - Additional Features
-  - Auto-approve tool call: [See implementation](src/tool.ts) 
+  - Auto-approve tool calls: [See implementation](src/tool.ts) 
   - Claude Prompt Caching: [See implementation](src/claude.ts)
-  - (Experimental) Memory Bank: [See prompt](src/agent.ts)
+  - (Experimental) Memory Bank: Store and retrieve information across sessions ([See prompt](src/agent.ts))
 
 ## Getting Started
 
@@ -36,6 +37,13 @@ Install dependencies and build the agent:
 ```sh
 npm install
 npm run build
+```
+
+Configure your API keys by adding them to the `.secrets/` directory:
+
+```sh
+echo "$OPENAI_API_KEY" > .secrets/openai-api-key.txt
+echo "$ANTHROPIC_API_KEY" > .secrets/anthropic-api-key.txt
 ```
 
 ### Usage
