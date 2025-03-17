@@ -1,6 +1,6 @@
-# Coding Agent (LangGraph)
+# Coding Agent
 
-An example implementation of a CLI coding assistant built with LangGraph.
+An example implementation of a CLI coding agent built with LangGraph.js.
 
 > [!NOTE]
 > A more lightweight version without LangGraph is available in [my dotfiles repository](https://github.com/iinm/dotfiles/tree/main/agent).
