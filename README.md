@@ -24,7 +24,7 @@ An example implementation of a CLI coding agent built with LangGraph.js.
     - Claude Sonnet
     - Claude Sonnet (with extended thinking capabilities)
 - Additional Features
-  - Auto-approve tool calls: [See implementation](src/tool.ts) 
+  - Auto-approve tool calls: [See implementation](src/tool.ts)
   - Claude Prompt Caching: [See implementation](src/claude.ts)
   - (Experimental) Memory Bank: Store and retrieve information across sessions ([See prompt](src/agent.ts))
 
