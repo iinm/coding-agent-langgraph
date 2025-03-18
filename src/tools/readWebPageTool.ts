@@ -1,13 +1,14 @@
 import { tool } from "@langchain/core/tools";
-import { Readability } from "@mozilla/readability";
 
-import { JSDOM } from "jsdom";
 import z from "zod";
 
 const MAX_CONTENT_LENGTH = 1024 * 8;
 
 export const readWebPageTool = tool(
   async ({ url }: { url: string }) => {
+    const { Readability } = await import("@mozilla/readability");
+    const { JSDOM } = await import("jsdom");
+
     const response = await fetch(url);
     const html = await response.text();
     const dom = new JSDOM(html, { url });

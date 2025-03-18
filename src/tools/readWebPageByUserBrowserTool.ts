@@ -1,10 +1,7 @@
 import path from "node:path";
 
 import { tool } from "@langchain/core/tools";
-import { Readability } from "@mozilla/readability";
 
-import { JSDOM } from "jsdom";
-import { chromium } from "playwright";
 import z from "zod";
 
 export const USER_DATA_DIR = path.join(
@@ -16,6 +13,11 @@ const MAX_CONTENT_LENGTH = 1024 * 8;
 
 export const readWebPageByBrowserTool = tool(
   async ({ url }: { url: string }) => {
+    // Dynamically import required modules
+    const { chromium } = await import("playwright");
+    const { JSDOM } = await import("jsdom");
+    const { Readability } = await import("@mozilla/readability");
+
     const context = await chromium.launchPersistentContext(USER_DATA_DIR, {
       headless: false,
     });
