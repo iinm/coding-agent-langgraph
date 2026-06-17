@@ -2,9 +2,6 @@
 
 An example implementation of a CLI coding agent built with LangGraph.js.
 
-> [!NOTE]
-> A lighter version without LangGraph is available at [Plain Agent](https://github.com/iinm/plain-agent).
-
 ## Features
 
 - Available Tools
